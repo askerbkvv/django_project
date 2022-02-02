@@ -1,0 +1,32 @@
+{% extends 'posts/base.html' %}
+{% load static %}
+{% block content %}
+{% for post in posts %}
+
+<div class="blog-list clearfix">
+                                
+
+<div class="blog-box row">
+        <div class="col-md-4">
+            <div class="post-media">
+                <a href="#" title="">
+                    <img src="{{ post.image.url }}" alt="" class="img-fluid">
+                    <div class="hovereffect"></div>
+                </a>
+            </div><!-- end media -->
+        </div><!-- end col -->
+
+        <div class="blog-meta big-meta col-md-8">
+            <h4><a href="{% url 'posts-detail' post.id %}" title="">{{ post.title }}</a></h4>
+            <p>{{ post.description }}</p>
+            <small><a href="#" title="">{{ post.datetime }}</a></small>
+            <small><a href="#" title="">{{ post.user }}</a></small>
+        </div><!-- end meta -->
+</div><!-- end blog-box -->
+
+<hr class="invis">
+</div><!-- end blog-box -->
+
+
+{% endfor %}
+{% endblock %}

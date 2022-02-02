@@ -1,0 +1,20 @@
+{% extends "posts/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <img class="rounded-circle account-img" src="{{ object.user.profile.image.url }}" alt="">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ object.user }}</a>
+                <small class="text-muted">{{ object.datetime|date:"F d, Y" }}</small>
+                {% if object.user == user %}
+                <div>
+                    <a class="btn btn-secondaty btn-sm mt-1 mb-1" href="{% url 'posts-update' object.id %}">Update</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'posts-delete' object.id %}">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+            <h2 class="article-title">{{ object.title }}</h2>
+            <p class="article-title">{{ object.description }}</p>
+        </div>
+    </article>
+{% endblock content %}
